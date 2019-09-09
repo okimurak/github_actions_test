@@ -3,19 +3,18 @@
 name: GithubActoinsTest
 
 # on : 必須
-# 
 on: [push]
 
 jobs:
   first_job:
+    name: Initial Job
+    runs-on: ubuntu-latest
     steps:
       - name: Github First Step
-        uses: actions/helloworld@master
-        env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-          MY_VAR1: a_variable
-        with:
-         first_name: Toki
-         middle_name : the
-         last_name: Hokuto
+        uses: actions/checkout@master
       - run: echo All Done!
+      - run: echo Test Artifact > test.txt
+      - uses: actions/upload-artifact@master
+        with:
+          name: my-artifact
+          path: test.txt
