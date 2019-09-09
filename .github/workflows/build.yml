@@ -1,0 +1,21 @@
+
+# ワークフローの名前をつける
+name: GithubActoinsTest
+
+# on : 必須
+# 
+on: [push]
+
+jobs:
+  first_job:
+    steps:
+      - name: Github First Step
+        uses: actions/helloworld@master
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          MY_VAR1: a_variable
+        with:
+         first_name: Toki
+         middle_name : the
+         last_name: Hokuto
+      - run: echo All Done!
